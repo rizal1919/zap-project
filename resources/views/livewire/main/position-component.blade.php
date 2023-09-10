@@ -2,6 +2,14 @@
 
 @section('title', 'Position')
 
+@section('js_scripts')
+	<script>
+		var start = "{{ $start }}";
+		var id_activity = "{{ $id }}";
+	</script>
+	<script src="metronic_assets/position.js"></script>
+@endsection
+
 @section('content')
 <div>
     {{-- @dd($user) --}}
@@ -16,9 +24,9 @@
 			</a> --}}
 			<!--end::Logo-->
 			<!--begin::Wrapper-->
-			<div class="w-lg-500px h-lg-450px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+			<div class="w-lg-650px h-lg-450px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
 				<!--begin::Form-->
-				
+				@routes
 				<div class="row justify-content-center" style="margin-bottom: 50px;">
 					<div class="col-lg-3 text-end">
 						<a href="{{ route('position') }}">
@@ -46,10 +54,35 @@
 				<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="../../demo1/dist/index.html" action="#">
 					<!--begin::Heading-->
 					@csrf
+
+					<div class="row">
+						<div class="col-lg-8">
+							<h6 class="text-dark mb-10 text-uppercase mt-5">Posisi {{ $user->username }}</h6>
+							<h1 style="font-size: 50px; margin-bottom: 20px;" id="position"></h1>
+						</div>
+						<div class="col-lg-4">
+							<div class="row justify-content-between">
+								<div class="col-lg-12 mb-10">
+									<p class="fw-bolder mt-5 mb-2">Date Today :</p>
+									<p>{{ date('d/m/Y') }}</p>
+
+									<p class="fw-bolder mt-5 mb-2">Troubles :</p>
+									<p id="activity"></p>
+
+									<p class="fw-bolder mt-5 mb-2">Duration :</p>
+									<p id="timer" class="d-block">{{ $last_activity != null ? "00 : 00 : 00" : "-" }}</p>
+								</div>
+								<div class="col-lg-12">
+									<a href="javascript:void(0)" id="done_activity" class="btn btn-sm btn-primary {{ $last_activity != null ? '' : 'd-none'  }}">Selesai</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="text-center mb-10">
 						<!--begin::Title-->
                         {{-- @dd($user) --}}
-						<h6 class="text-dark mb-3 text-uppercase">Posisi {{ $user->username }}</h6>
+						
 						<!--end::Title-->
 						<!--begin::Link-->
 						{{-- <div class="text-gray-400 fw-bold fs-4">New Here?
@@ -86,14 +119,15 @@
 					<!--end::Input group-->
 
 					<div class="text-center">
-						<h1 style="font-size: 50px; margin-bottom: 20px;">{{ $last_activity != null ? $last_activity->place_activity->place : "Place Unset" }}</h1>
-						<p>{{ $last_activity != null ? $last_activity->activity : "Troubleshoot Is Not Writen or Undefined" }}</p>
+						
+						
+						{{-- <button id="stop">Stop</button> --}}
 					</div>
 					<!--begin::Actions-->
-					<div class="text-center">
+					<div class="text-center" style="margin-top: 70px;">
 						<!--begin::Submit button-->
-						{{-- <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-							<span class="indicator-label">Continue</span>
+						{{-- <button type="submit" id="done_activity" class="btn btn-sm btn-primary mb-5 {{ $last_activity != null ? '' : 'd-none'  }}">
+							<span class="indicator-label">Selesai</span>
 							<span class="indicator-progress">Please wait...
 							<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 						</button> --}}

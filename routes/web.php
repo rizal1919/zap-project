@@ -29,4 +29,9 @@ Route::get('/profile', ProfileComponent::class)->name('profile');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/login', [LoginController::class, 'loginStart'])->name('loginStart');
 Route::post('/signup/store', [LoginController::class, 'storeUser'])->name('storeUser');
+
+
 Route::post('/profile/store', [PositionController::class, 'storePosition'])->name('storePosition');
+Route::get('/profile/set-default/{id}', [PositionController::class, 'setDefaultPlace'])->name('setDefaultPlace');
+Route::get('/profile/read', [PositionController::class, 'getPosition'])->name('getPosition');
+

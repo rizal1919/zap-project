@@ -17,11 +17,13 @@ class PositionComponent extends Component
             abort(403);
         }
         $user     = Auth::user();
-        $last_activity  = Activity::with('user_activity:id,username', 'place_activity:id,place')->where('user_id', $user->id)->latest()->first();
+        $last_activity  = Activity::with('user_activity:id,username', 'place_activity:id,place')->where('user_id', $user->id)->whereNull('end')->latest()->first();
 
         $data = [
             'user'          => $user,
-            'last_activity' => $last_activity
+            'last_activity' => $last_activity,
+            'start'         => $last_activity != null ? $last_activity->start : null,
+            'id'            => $last_activity != null ? $last_activity->id : null,
         ];
         return view('livewire.main.position-component', $data)->layout('layouts.template');
     }

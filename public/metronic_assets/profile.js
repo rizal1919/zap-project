@@ -49,7 +49,7 @@ var KTSignupGeneral = (function () {
                                 processData: false,
                                 contentType: false,
                                 success: function (response) {
-                                    (t.disabled = !0),
+                                        (t.disabled = !0),
                                         t.removeAttribute("data-kt-indicator"),
                                         (t.disabled = !1),
                                         Swal.fire({
@@ -62,12 +62,24 @@ var KTSignupGeneral = (function () {
                                                     "btn btn-primary",
                                             },
                                         }).then(function (t) {
-                                            window.location.reload();
+                                            window.location.href = route('position')
                                         });
                                 },
                                 error: function (error) {
                                     if (error.status == 409) {
-                                        alert(error.responseJSON.message);
+                                        Swal.fire({
+                                            title: error.responseJSON.message,
+                                            text: "Silahkan klik tombol selesai pada menu posisi",
+                                            icon: "error",
+                                            buttonsStyling: !1,
+                                            confirmButtonText: "Ok",
+                                            customClass: {
+                                                confirmButton:
+                                                    "btn btn-primary",
+                                            },
+                                        }).then(function (t) {
+                                            window.location.href = route('position')
+                                        });
                                     }
                                     // console.log(error);
                                     t.removeAttribute("data-kt-indicator");
