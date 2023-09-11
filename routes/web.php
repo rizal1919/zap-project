@@ -23,7 +23,7 @@ use App\Livewire\Main\ProfileComponent;
 // });
 
 Route::get('/', [LoginController::class, 'guest'])->name('guestLogin');
-Route::get('/signup/show', [LoginController::class, 'signup'])->name('startSignup');
+Route::get('/signup', [LoginController::class, 'signup'])->name('startSignup');
 Route::get('/position', PositionComponent::class)->name('position');
 Route::get('/profile', ProfileComponent::class)->name('profile');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
