@@ -84,10 +84,11 @@
             url: route("getPosition"),
             success: function (response) {
                 if(response.data !== null){
-                    $('#done_activity').attr('onclick', `setDefaultPlace(${response.data.id})`);
+                    $('#done_activity').attr('onclick', `setDefaultPlace('${response.data.id}')`);
                     setTimerUp(response.data.start, response.data.id)
                 }else{
                     clearInterval(stopwatchInterval)
+                    $('#timer').text('-');
                 }
                 $("#position").text(response.position != null ? response.position : 'EDP');
                 $("#activity").text(response.activity != null ? response.activity : 'Not in Trouble');

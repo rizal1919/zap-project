@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "sweetalert2": "^11.7.27"
+        "sweetalert2": "^11.7.27",
+        "ziggy-js": "^1.6.2"
     }
 }

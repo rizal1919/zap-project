@@ -70,7 +70,7 @@
 									<p id="activity"></p>
 
 									<p class="fw-bolder mt-5 mb-2">Duration :</p>
-									<p id="timer" class="d-block">{{ $last_activity != null ? "00 : 00 : 00" : "-" }}</p>
+									<p id="timer" class="d-block"></p>
 								</div>
 								<div class="col-lg-12">
 									<a href="javascript:void(0)" id="done_activity" class="btn btn-sm btn-primary {{ $last_activity != null ? '' : 'd-none'  }}">Selesai</a>
