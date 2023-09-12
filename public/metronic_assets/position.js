@@ -88,7 +88,8 @@
                     setTimerUp(response.data.start, response.data.id)
                 }else{
                     clearInterval(stopwatchInterval)
-                    $('#timer').text('-');
+                    $("#done_activity").addClass('d-none');
+                    $("#timer").text("-");
                 }
                 $("#position").text(response.position != null ? response.position : 'EDP');
                 $("#activity").text(response.activity != null ? response.activity : 'Not in Trouble');
