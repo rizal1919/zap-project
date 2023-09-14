@@ -22,7 +22,7 @@
         $("#done_activity").removeClass('d-none');
         let objectTime      = new Date(start).getTime();
         let currentTime     = new Date().getTime();
-        let updatedTime     = new Date(objectTime + 60 * 60 * 1000).getTime();
+        let updatedTime     = new Date(objectTime + 180 * 60 * 1000).getTime();
         
 
         let split   = start.split(' ')[1];

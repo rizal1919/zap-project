@@ -61,7 +61,7 @@ var KTSigninGeneral = (function () {
                                     e.removeAttribute("data-kt-indicator"),
                                     (e.disabled = !1),
                                     Swal.fire({
-                                        text: "Login Success !",
+                                        text: "Login Berhasil!",
                                         icon: "success",
                                         buttonsStyling: !1,
                                         confirmButtonText: "Ok, got it!",
@@ -74,6 +74,7 @@ var KTSigninGeneral = (function () {
                                         });
                                 },
                                 error: function (error) {
+                                    toastr.error('Data pengguna tidak ditemukan', 'Login Gagal!')
                                     e.removeAttribute("data-kt-indicator");
 
                                     if (error.responseJSON.errors) {
